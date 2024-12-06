@@ -126,7 +126,11 @@ const EventCard: React.FC<EventCardProps> = ({
                 sharedTransitionTag="tag"
               /> */}
               <SharedElement id={`item.${index}.card`}>
-                <Animated.Image source={item.image} style={styles.cardImage} />
+                <Animated.Image
+                  source={item.image}
+                  style={styles.cardImage}
+                  sharedTransitionTag="tag"
+                />
               </SharedElement>
               <View
                 style={[

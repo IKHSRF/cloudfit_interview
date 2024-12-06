@@ -48,8 +48,9 @@ export default function RootLayout() {
           name="Detail"
           component={DetailScreen}
           options={{
-            headerShown: true,
-            animation: "fade",
+            headerShown: false,
+            // animation: "fade",
+            presentation: "modal",
           }}
         />
         <Stack.Screen
