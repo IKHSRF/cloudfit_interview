@@ -42,6 +42,25 @@ The app includes several animations, with a focus on enhancing the user experien
 - Tap to Expand Animation: When the user taps on an event, the event card expands to display more details. This is achieved using react-native-reanimated for smooth transitions and scaling effects.
 
 - Modal Animation: Due to challenges with shared element transitions (which couldn’t be achieved using libraries like react-native-shared-element, react-navigation-shared-element, and custom solutions), I opted to use a modal for event details. The modal appears with a fade-in effect, and the content inside the modal scales up for a smooth transition.
+  
+## Thought Process and Design Choices
+- Understanding the Requirements: The goal was to create a smooth and visually engaging experience for users interacting with event cards. I wanted to implement animations that enhance usability without being overly distracting.
+  
+- Research and Exploration: I reviewed different animation libraries (react-native-reanimated, react-native-shared-element, and react-navigation-shared-element) to determine the best approach for implementing shared element transitions.
+  
+- Fallback and Decision: Despite my attempts, shared element transitions were not functioning due to compatibility issues with the latest React versions and Expo. Instead of compromising the experience, I opted to use modals for a clean and functional fallback solution.
+
+## Steps to Implement and Optimize Animations
+1.	Card Tap Animation (Tap to Expand):
+    - Used react-native-reanimated for the animation effects when a user taps an event card.
+    - Implemented scaling and opacity changes to provide a smooth visual transition, making the interaction feel responsive.
+2.	Modal Transition:
+    - Used the default React Native `Modal` component for simplicity and seamless integration.
+3.	Optimization:
+    - Minimized animation frame drops by using useSharedValue and withTiming in react-native-reanimated.
+    - Avoided heavy operations during animations to maintain high performance, especially on lower-end devices.
+    - Implemented interactive gestures using `FlingGestureHandler` for smooth swipe-based interactions on the `EventCard`.
+    - Used `Animated.View` to add responsiveness and subtle motion effects, enhancing the overall user experience.
 
 ## Challenges Faced
 - Shared Element Transitions: Despite trying multiple libraries such as react-native-shared-element and react-navigation-shared-element, the shared element transition feature did not work as expected. I faced issues with animation stuttering and unsatisfactory results. After researching online, I found that the shared element functionality is currently not compatible with the latest versions of React Native and Reanimated. Specifically, I came across an issue report on GitHub ([react-native-reanimated/issues/6630](https://github.com/software-mansion/react-native-reanimated/issues/6630)) that mentions the problem with the latest React versions.
