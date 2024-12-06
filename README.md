@@ -1,50 +1,55 @@
-# Welcome to your Expo app 👋
+# CloudFit Interview
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Demo Application
+<img src="demo-apps.gif" alt="Demo Animation" style="width:100%; height:auto;">
 
-## Get started
 
-1. Install dependencies
+## Inspiration
+This project is inspired by a design I came across on Dribbble. The shot that sparked the idea for this project can be viewed here:
+
+[Event Mobile App by Ananto Nugroho Putra for Korsa](https://dribbble.com/shots/22751656-Mucicy-Event-Mobile-App)
+
+## Project Overview
+The project aims to recreate a similar event mobile app with a focus on event discovery, user engagement, and a streamlined experience. While I've drawn inspiration from the Dribbble shot, please note that there are some changes made in the final product due to limitations in resources. This includes the absence of exact assets, some design tweaks, and adjustments to align with the functionality and UI.
+
+## Technologies Used
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+## Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/IKHSRF/cloudfit_interview.git
+2. Navigate to the project directory:
+
+   ```bash
+   cd cloudfit-interview
+3. Install the dependencies:
 
    ```bash
    npm install
-   ```
-
-2. Start the app
+4. Start the Expo development server:
 
    ```bash
-    npx expo start
-   ```
+   npm start
 
-In the output, you'll find options to open the app in a
+## Approach and Animation Details
+The app includes several animations, with a focus on enhancing the user experience. Here’s an overview of the key animations used:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Tap to Expand Animation: When the user taps on an event, the event card expands to display more details. This is achieved using react-native-reanimated for smooth transitions and scaling effects.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- Modal Animation: Due to challenges with shared element transitions (which couldn’t be achieved using libraries like react-native-shared-element, react-navigation-shared-element, and custom solutions), I opted to use a modal for event details. The modal appears with a fade-in effect, and the content inside the modal scales up for a smooth transition.
 
-## Get a fresh project
+## Challenges Faced
+- Shared Element Transitions: Despite trying multiple libraries such as react-native-shared-element and react-navigation-shared-element, the shared element transition feature did not work as expected. I faced issues with animation stuttering and unsatisfactory results. After researching online, I found that the shared element functionality is currently not compatible with the latest versions of React Native and Reanimated. Specifically, I came across an issue report on GitHub ([react-native-reanimated/issues/6630](https://github.com/software-mansion/react-native-reanimated/issues/6630)) that mentions the problem with the latest React versions.
 
-When you're ready, run:
+- Expo Go Compatibility: Additionally, I discovered that shared element transitions do not work with Expo Go versions 50+ as mentioned in this Stack Overflow thread ([sharedtransitiontag-not-working-react-native-reanimated-3-expo-51](https://stackoverflow.com/questions/78810834/sharedtransitiontag-not-working-react-native-reanimated-3-expo-51)). I attempted to resolve this issue by building a development build, but the issue persisted. Given that the project requirement specified using Expo, I was unable to switch to the bare workflow, so I decided to implement a modal as a functional workaround.
 
-```bash
-npm run reset-project
-```
+- Modal Implementation: As a workaround, I implemented a modal that expands upon tapping the event card. The modal provides a clean and functional solution, though it deviates from the original design that relied on shared element transitions.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Conclusion
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+While there were challenges in implementing shared element transitions, the use of Expo, React Native, and custom modal animations allowed me to recreate the event app with smooth interactions and a visually appealing interface.
